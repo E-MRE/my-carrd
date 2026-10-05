@@ -1,0 +1,386 @@
+/* ==========================================================================
+   Design Tokens & Theme Variables (Carrd #318 Polish)
+   ========================================================================== */
+:root {
+  --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Carrd #318 Dark Palette (Default) */
+  --page-bg: #22222A;
+  --top-card-bg: rgba(255, 255, 255, 0.065);
+  --bottom-card-bg: linear-gradient(132deg, rgba(255, 255, 255, 0.09) 35%, rgba(227, 189, 82, 0.24) 100%);
+  
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.7);
+
+  --text-heading: #FFFFFF;
+  --text-body: rgba(255, 255, 255, 0.78); /* WCAG AA 6.2:1 */
+  --text-strong: #FFFFFF;
+  --text-muted: rgba(255, 255, 255, 0.52);
+
+  /* Vurgu Rengi (Accent) */
+  --accent: #E3BD52;
+  --accent-bright: #FACD64;
+  --accent-btn-bg: #E3BD52;
+  --accent-btn-hover: #FACD64;
+  --accent-btn-text: #1C1C24;
+
+  --badge-bg: rgba(255, 255, 255, 0.05);
+  --badge-border: rgba(255, 255, 255, 0.1);
+  --badge-hover-border: rgba(227, 189, 82, 0.5);
+
+  --grain-opacity: 0.22;
+}
+
+[data-theme="light"] {
+  /* Carrd #318 High-Contrast Light Palette */
+  --page-bg: #EDEDF2;
+  --top-card-bg: #FFFFFF;
+  --bottom-card-bg: linear-gradient(132deg, #F8FAFC 35%, rgba(217, 119, 6, 0.12) 100%);
+  
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.09);
+
+  --text-heading: #111827;
+  --text-body: #3F3F46; /* WCAG AA 7.5:1 */
+  --text-strong: #111827;
+  --text-muted: #71717A;
+
+  --accent: #D97706;
+  --accent-bright: #B45309;
+  --accent-btn-bg: #18181B; /* High-contrast graphite button */
+  --accent-btn-hover: #27272A;
+  --accent-btn-text: #FFFFFF;
+
+  --badge-bg: #F4F4F5;
+  --badge-border: rgba(0, 0, 0, 0.08);
+  --badge-hover-border: rgba(217, 119, 6, 0.6);
+
+  --grain-opacity: 0.08;
+}
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--page-bg);
+  font-family: var(--font-body);
+  color: var(--text-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Carrd SVG Noise/Grain Texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--grain-opacity);
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22noise%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.875%22%20numOctaves%3D%224%22%20stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23noise)%22%20opacity%3D%220.45%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: repeat;
+}
+
+.font-heading { font-family: var(--font-heading); }
+.font-mono-val { font-family: var(--font-mono); }
+
+/* ==========================================================================
+   Layout Containers
+   ========================================================================== */
+.carrd-wrapper {
+  width: 100%;
+  max-width: 56rem; /* 896px */
+  padding: 2.5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .carrd-wrapper {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* Panel 1: Top Container */
+.top-panel {
+  background-color: var(--top-card-bg);
+  border-top-left-radius: 1.75rem;
+  border-top-right-radius: 1.75rem;
+  border: 1px solid var(--card-border);
+  border-bottom: none;
+  box-shadow: var(--card-shadow);
+  padding: 4rem 3.5rem;
+  position: relative;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@media (max-width: 768px) {
+  .top-panel {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Panel 2: Bottom Container */
+.bottom-panel {
+  background: var(--bottom-card-bg);
+  border-bottom-left-radius: 1.75rem;
+  border-bottom-right-radius: 1.75rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  padding: 1.25rem 3.5rem;
+  position: relative;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@media (max-width: 768px) {
+  .bottom-panel {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Typography & Elements
+   ========================================================================== */
+.carrd-h1 {
+  font-family: var(--font-heading);
+  color: var(--text-heading);
+  font-size: 3.25rem;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.15rem;
+}
+
+@media (max-width: 768px) {
+  .carrd-h1 {
+    font-size: 2.35rem;
+    letter-spacing: -0.09rem;
+  }
+}
+
+.carrd-h1 mark {
+  color: var(--accent);
+  background-color: transparent;
+  font-weight: inherit;
+}
+
+.carrd-body {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.carrd-body strong {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Project Badges (Proof of Work)
+   ========================================================================== */
+.project-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.85rem;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-heading);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-badge:hover {
+  border-color: var(--badge-hover-border);
+  transform: translateY(-1px);
+}
+
+.project-badge .badge-tag {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  color: var(--text-muted);
+}
+
+.project-badge .badge-arrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.project-badge:hover .badge-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   Social Icon Buttons (Bottom Panel)
+   ========================================================================== */
+.social-links-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;  /* 44px A11y Touch Target */
+  height: 2.75rem; /* 44px */
+  border-radius: 0.85rem;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--text-heading);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.social-icon-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.social-icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .social-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.social-icon-btn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
+   Smart CTA Button
+   ========================================================================== */
+.carrd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 3.25rem;
+  padding: 0 1.75rem;
+  border-radius: 3rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.015rem;
+  text-decoration: none;
+  background-color: var(--accent-btn-bg);
+  color: var(--accent-btn-text);
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.16);
+  border: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.carrd-btn:hover {
+  background-color: var(--accent-btn-hover);
+  transform: scale(1.035);
+  box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.24);
+}
+
+.carrd-btn:active {
+  transform: scale(0.98);
+}
+
+.carrd-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Photo Frame
+   ========================================================================== */
+.photo-frame {
+  width: 100%;
+  max-width: 22rem;
+  aspect-ratio: 1 / 1.15;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.4s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.025);
+}
+
+.email-hint {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.email-hint:hover {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Toast Notification for Clipboard Feedback
+   ========================================================================== */
+#copy-toast {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+#copy-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Focus Visible Accessibility */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

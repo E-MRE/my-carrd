@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title id="meta-title">Emre Gültekir — Flutter Geliştirici & AI Ürün Üreticisi</title>
+  <meta name="title" id="meta-title-tag" content="Emre Gültekir — Flutter Geliştirici & AI Ürün Üreticisi">
+  <meta name="description" id="meta-desc" content="5 yıldır Flutter ile mobil uygulama geliştiriyorum. Mesai dışında yapay zekâ ajanlarıyla gerçek ürünler inşa ediyorum.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" id="og-title" content="Emre Gültekir — Flutter Geliştirici & AI Ürün Üreticisi">
+  <meta property="og:description" id="og-desc" content="5 yıldır Flutter ile mobil uygulama geliştiriyorum. Mesai dışında yapay zekâ ajanlarıyla gerçek ürünler inşa ediyorum.">
+  <meta property="og:image" id="og-img" content="assets/profile.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" id="tw-title" content="Emre Gültekir — Flutter Geliştirici & AI Ürün Üreticisi">
+  <meta property="twitter:description" id="tw-desc" content="5 yıldır Flutter ile mobil uygulama geliştiriyorum. Mesai dışında yapay zekâ ajanlarıyla gerçek ürünler inşa ediyorum.">
+  <meta property="twitter:image" id="tw-img" content="assets/profile.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Utilities & Custom Stylesheet -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="carrd-wrapper flex flex-col gap-3">
+
+    <!-- Top Utility Bar: Role Badge + Language & Theme Controls -->
+    <header class="flex items-center justify-between px-2 text-xs font-mono-val min-w-0">
+      <!-- Live Status Badge -->
+      <div class="flex items-center gap-2 text-[var(--text-muted)] min-w-0 pr-2">
+        <span class="w-2 h-2 rounded-full inline-block shrink-0" style="background-color: var(--accent);"></span>
+        <span id="label-role" class="truncate text-[11px] sm:text-xs">FLUTTER & AI BUILDER</span>
+      </div>
+
+      <!-- Controls: Language Toggle + Theme Toggle -->
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- TR / EN Segmented Toggle -->
+        <div class="flex items-center bg-black/10 dark:bg-white/10 rounded-full p-0.5 border border-[var(--card-border)]" role="group" aria-label="Language selection">
+          <button id="btn-tr" onclick="setLanguage('tr')" class="px-2.5 py-0.5 rounded-full font-semibold transition-all bg-[var(--accent)] text-[var(--accent-btn-text)]" aria-label="Türkçe">TR</button>
+          <button id="btn-en" onclick="setLanguage('en')" class="px-2.5 py-0.5 rounded-full font-semibold transition-all text-[var(--text-muted)] hover:text-[var(--text-heading)]" aria-label="English">EN</button>
+        </div>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button onclick="toggleTheme()" class="p-1.5 rounded-full bg-black/10 dark:bg-white/10 border border-[var(--card-border)] text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-colors" aria-label="Temayı Değiştir">
+          <!-- Sun Icon -->
+          <svg id="icon-sun" class="w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <!-- Moon Icon -->
+          <svg id="icon-moon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Carrd Frame -->
+    <main>
+
+      <!-- Panel 1: Top Container (Identity, Editorial Bio, Proof-of-Work Badges, Portrait) -->
+      <section class="top-panel grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center" aria-label="Profil ve Biyografi">
+        
+        <!-- Left Column: Identity, Bio & Project Badges -->
+        <div class="md:col-span-7 flex flex-col gap-6 order-2 md:order-1">
+          
+          <!-- H1: Name with Signature Mark Accent -->
+          <h1 class="carrd-h1" id="hero-name">
+            <!-- Dynamically rendered via app.js & site.config.js -->
+          </h1>
+
+          <!-- Editorial Bio (Lead sentence + Body) -->
+          <p class="carrd-body" id="hero-bio">
+            <!-- Dynamically rendered via app.js & site.config.js -->
+          </p>
+
+          <!-- Proof-of-Work: Independent Project Badges -->
+          <div class="flex flex-col gap-2.5 pt-1">
+            <span class="text-xs font-mono-val uppercase tracking-wider text-[var(--text-muted)]" id="label-projects">
+              <!-- Dynamically rendered via app.js & site.config.js -->
+            </span>
+            <div class="flex flex-wrap gap-2.5" id="projects-container">
+              <!-- Dynamically rendered via app.js & site.config.js -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Framed Portrait Photo (Order-1 on Mobile, Order-2 on Desktop) -->
+        <div class="md:col-span-5 flex justify-center order-1 md:order-2">
+          <div class="photo-frame">
+            <img 
+              src="" 
+              alt="Profil Fotoğrafı"
+              id="profile-img"
+              loading="eager"
+            />
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Panel 2: Bottom Container (Strictly Social Profiles Icons + Smart Frictionless CTA) -->
+      <section class="bottom-panel flex flex-col sm:flex-row items-center justify-between gap-5" aria-label="Bağlantılar ve İletişim">
+        
+        <!-- Left: Clean Social Network Profiles as Icon Buttons -->
+        <nav aria-label="Sosyal Bağlantılar">
+          <ul class="social-links-group" id="links-list">
+            <!-- Dynamically rendered as icon buttons from site.config.js & app.js -->
+          </ul>
+        </nav>
+
+        <!-- Right: Smart Frictionless CTA Button & Email Indicator -->
+        <div class="relative flex flex-col items-center sm:items-end w-full sm:w-auto gap-1.5">
+          <button 
+            id="btn-cta" 
+            class="carrd-btn w-full sm:w-auto" 
+            type="button"
+            aria-label="E-posta gönder veya adresi kopyala"
+          >
+            <!-- Carrd Envelope SVG Icon -->
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <path d="M37.5,12.6l-17.5,11.9L2.5,12.6c-.2-.1-.3-.2-.5-.2v-2.7c0-.8.6-1.4,1.4-1.4h33.1c.8,0,1.4.6,1.4,1.4v2.7c-.2,0-.4,0-.5.2ZM19.5,26.3c.2.1.3.2.5.2s.4,0,.5-.2l17.5-11.9v16.9c0,.8-.6,1.4-1.4,1.4H3.4c-.8,0-1.4-.6-1.4-1.4V14.4l17.5,11.9Z" />
+            </svg>
+            <span id="btn-cta-label">İletişime Geç</span>
+          </button>
+
+          <!-- Transparent Email Caption -->
+          <a 
+            id="email-display" 
+            href="" 
+            class="email-hint"
+            title="Doğrudan e-posta gönder"
+          >
+            <!-- Dynamically set via app.js -->
+          </a>
+
+          <!-- Micro-toast floating above button -->
+          <div id="copy-toast" class="absolute -top-9 px-3 py-1 rounded-md bg-[var(--text-heading)] text-[var(--page-bg)] text-xs font-mono-val shadow-md" role="status" aria-live="polite">
+            ✓ E-posta kopyalandı!
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Config & Engine Scripts -->
+  <script src="site.config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
